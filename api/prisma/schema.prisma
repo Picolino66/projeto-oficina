@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id          String    @id @default(uuid())
+  nome        String
+  cpf         String?
+  telefone    String?
+  logradouro  String?
+  numero      String?
+  complemento String?
+  bairro      String?
+  cidade      String?
+  cep         String?
+  visivel     Boolean   @default(true)
+  servicos    Servico[]
+  veiculos    Veiculo[]
+
+  @@map("cliente")
+}
+
+model Funcionario {
+  id          String               @id @default(uuid())
+  nome        String
+  cpf         String
+  telefone    String
+  logradouro  String
+  numero      String
+  complemento String
+  bairro      String
+  cidade      String
+  cep         String
+  visivel     Boolean              @default(true)
+  servicos    FuncionarioServico[]
+
+  @@map("funcionario")
+}
+
+model Veiculo {
+  id        String    @id @default(uuid())
+  clienteId String
+  tipo      String
+  modelo    String
+  marca     String
+  placa     String
+  cor       String
+  ano       Float
+  visivel   Boolean   @default(true)
+  servicos  Servico[]
+  cliente   Cliente   @relation(fields: [clienteId], references: [id])
+
+  @@index([clienteId], map: "veiculo_clienteId_fkey")
+  @@map("veiculo")
+}
+
+model Servico {
+  id           String               @id @default(uuid())
+  clienteId    String
+  veiculoId    String
+  placa        String
+  km           Float
+  nome         String
+  preco        Float
+  descricao    String
+  visivel      Boolean              @default(true)
+  pagamento    Float                @default(0)
+  dataInicio   DateTime             @default(now())
+  dataPrevista DateTime?
+  pagouTudo    Boolean              @default(false)
+  numeroNota   Int                  @unique(map: "numeroNota") @default(autoincrement())
+  funcionario  FuncionarioServico[]
+  cliente      Cliente              @relation(fields: [clienteId], references: [id])
+  veiculo      Veiculo              @relation(fields: [veiculoId], references: [id])
+
+  @@index([clienteId], map: "servico_clienteId_fkey")
+  @@index([veiculoId], map: "servico_veiculoId_fkey")
+  @@map("servico")
+}
+
+model FuncionarioServico {
+  funcionarioId        String
+  servicoId            String
+  comissao_porcentagem Float
+  comissao_valor       Float
+  visivel              Boolean     @default(true)
+  funcionario          Funcionario @relation(fields: [funcionarioId], references: [id])
+  servico              Servico     @relation(fields: [servicoId], references: [id])
+
+  @@id([funcionarioId, servicoId])
+  @@index([servicoId], map: "funcionario_servico_servicoId_fkey")
+  @@map("funcionario_servico")
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  table     String
+  action    String
+  data      String   @db.LongText
+  where     String?  @db.LongText
+  timestamp DateTime @default(now())
+
+  @@map("audit_log")
+}
+
+model Usuario {
+  id       String  @id @default(uuid())
+  username String  @unique
+  name     String?
+  password String
+  visivel  Boolean @default(true)
+  nivel    Int     @default(1)
+
+  @@map("usuario")
+}
+
+model Orcamento {
+  id        Int     @id @default(autoincrement())
+  cliente   String  @db.VarChar(255)
+  descricao String? @db.Text
+  visivel   Boolean @default(true)
+}
