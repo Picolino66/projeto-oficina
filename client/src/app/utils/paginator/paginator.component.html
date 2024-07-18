@@ -1,0 +1,19 @@
+<div class="flex justify-between items-center">
+  <button
+      (click)="changePage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+  >
+      Anterior
+  </button>
+  <span class="text-gray-800 dark:text-gray-200 mx-auto">
+      Página {{ currentPage }} de {{ totalPages }}
+  </span>
+  <button
+      (click)="changePage(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+      class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+  >
+      Próximo
+  </button>
+</div>

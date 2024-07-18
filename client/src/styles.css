@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Personaliza toda a barra de rolagem */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Personaliza o fundo da barra de rolagem (track) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor de fundo */
+}
+
+/* Personaliza o manipulador da barra de rolagem (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Cor do thumb */
+}
+
+/* Personaliza o estado hover do manipulador da barra de rolagem */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor do thumb ao passar o mouse */
+}
+.w-25 {
+  width: 25%;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-15 {
+  width: 15%;
+}
+
+.with-scroll {
+  overflow-y: auto;
+}
+
+.error {
+  border-color: red !important;  /* O uso de !important garante a aplicação do estilo */
+}
+
+.div-cab-fixed {
+  position: fixed;
+  z-index: 1;
+  top: 70px;
+}
+
+.p-05 {
+  padding-left: 0.5rem !important;
+}

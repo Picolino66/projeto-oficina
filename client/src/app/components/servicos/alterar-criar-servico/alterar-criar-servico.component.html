@@ -1,0 +1,249 @@
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-4 px-4 mx-auto max-w-4xl lg:py-8">
+        <form
+            [formGroup]="servicoForm"
+            (ngSubmit)="onSubmit()"
+        >
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <app-auto-complete-selector
+                    [label]="'Proprietário'"
+                    [placeholder]="'Digite o nome do cliente'"
+                    (buscaTermo)="buscarClientes($event)"
+                    [itensFiltrados]="clientesFiltrados"
+                    (itemSelecionado)="onClienteSelecionado($event)"
+                    [valorSelecionado]="nomeClienteSelecionado"
+                >
+                </app-auto-complete-selector>
+                <div>
+                    <label
+                        for="modelo"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        Veículo
+                    </label>
+                    <select
+                        id="nomeSelect"
+                        (change)="onVeiculoSelecionado($event)"
+                        class="form-select block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600 bg-clip-padding bg-no-repeat border border-solid border-gray-300 dark:placeholder-gray-400 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white dark:focus:bg-gray-700 focus:border-blue-600 focus:outline-none"
+                        formControlName="veiculoId"
+                        [ngClass]="{'error': (submit || servicoForm.get('veiculoId')?.touched) && servicoForm.get('veiculoId')?.invalid}"
+                    >
+                        <option
+                            value
+                            disabled
+                            selected
+                        >
+                            Selecione um veículo
+                        </option>
+                        <option
+                            *ngFor="let veic of veiculos"
+                            [ngValue]="veic.id"
+                        >
+                            {{ veic.modelo }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                    <label
+                        for="placa"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        Placa
+                    </label>
+                    <input
+                        type="text"
+                        id="placa"
+                        formControlName="placa"
+                        [ngClass]="{'error': (submit || servicoForm.get('placa')?.touched) && servicoForm.get('placa')?.invalid}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Placa"
+                        maxlength="8"
+                        required
+                    >
+                </div>
+                <div>
+                    <label
+                        for="km"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        KM
+                    </label>
+                    <input
+                        type="number"
+                        id="km"
+                        formControlName="km"
+                        [ngClass]="{'error': (submit || servicoForm.get('km')?.touched) && servicoForm.get('km')?.invalid}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="KM"
+                        required
+                    >
+                </div>
+            </div>
+            <div class="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                    <label
+                        for="nome"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        Serviço
+                    </label>
+                    <input
+                        type="text"
+                        id="nome"
+                        formControlName="nome"
+                        [ngClass]="{'error': (submit || servicoForm.get('nome')?.touched) && servicoForm.get('nome')?.invalid}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Nome do Serviço"
+                        required
+                    >
+                </div>
+                <div>
+                    <label
+                        for="preco"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        Preço
+                    </label>
+                    <input
+                        type="number"
+                        id="preco"
+                        formControlName="preco"
+                        [ngClass]="{'error': (submit || servicoForm.get('preco')?.touched) && servicoForm.get('preco')?.invalid}"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Preço"
+                        (blur)="calculoComissoes($event)"
+                        required
+                    >
+                </div>
+            </div>
+
+
+            <div class="grid gap-6 mb-6 md:grid-cols-1">
+                <div>
+                    <label
+                        for="descricao"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                        Descrição
+                    </label>
+                    <ckeditor [editor]="Editor" formControlName="descricao"></ckeditor>
+                    <!--<textarea
+                        id="descricao"
+                        rows="4"
+                        formControlName="descricao"
+                        [ngClass]="{'error': (submit || servicoForm.get('descricao')?.touched) && servicoForm.get('descricao')?.invalid}"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Descreva o serviço"
+                        required
+                    ></textarea>-->
+                </div>
+            </div>
+
+
+            <button
+                type="button"
+                (click)="adicionarComissaoFuncionario()"
+                class="button"
+            >
+                <p class="text">Add Funcionário</p>
+            </button>
+            <div formArrayName="comissaoFuncionarios">
+                <div
+                    *ngFor="let cf of comissaoFuncionarios.controls;
+            let i = index"
+                    [formGroupName]="i"
+                >
+                <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-12">
+                  <!-- Botão de Remover -->
+                  <div class="md:col-span-1 flex items-end justify-center">
+                      <button
+                          type="button"
+                          (click)="removerComissaoFuncionario(i)"
+                          class="mb-0.5 bg-gray-800 text-white hover:bg-gray-700 dark:bg-blue-500 dark:text-gray-200 dark:hover:bg-blue-400 px-4 py-2 rounded transition duration-150 ease-in-out"
+                      >
+                          -
+                      </button>
+                  </div>
+                  <!-- Seleção de Funcionário -->
+                  <div class="md:col-span-5">
+                      <label
+                          for="funcionarioId"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                          Funcionário
+                      </label>
+                      <select
+                          id="funcionarioId"
+                          class="form-select block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white dark:bg-gray-700 dark:text-white dark:border-gray-600 bg-clip-padding bg-no-repeat border border-solid border-gray-300 dark:placeholder-gray-400 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white dark:focus:bg-gray-700 focus:border-blue-600 focus:outline-none"
+                          formControlName="funcionarioId"
+                          [ngClass]="{'error': (submit || servicoForm.get('comissaoFuncionarios')?.touched) && servicoForm.get('comissaoFuncionarios')?.invalid}"
+                      >
+                          <option
+                              value
+                              disabled
+                              selected
+                          >
+                              Selecione um funcionário
+                          </option>
+                          <option
+                              *ngFor="let func of funcionarios"
+                              [ngValue]="func.id"
+                          >
+                              {{ func.nome }}
+                          </option>
+                      </select>
+                  </div>
+                  <!-- Comissão em % -->
+                  <div class="md:col-span-3">
+                      <label
+                          for="comissaoPerc"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                          Comissão (%)
+                      </label>
+                      <input
+                          (blur)="calculoComissoes($event, i)"
+                          type="number"
+                          id="comissaoPerc"
+                          formControlName="comissaoPerc"
+                          [ngClass]="{'error': (submit || servicoForm.get('comissaoFuncionarios')?.touched) && servicoForm.get('comissaoFuncionarios')?.invalid}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Valor em %"
+                          required
+                      >
+                  </div>
+                  <!-- Comissão em R$ -->
+                  <div class="md:col-span-3">
+                      <label
+                          for="comissaoMone"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                          Comissão (R$)
+                      </label>
+                      <input
+                          (blur)="calculoComissoes($event, i)"
+                          type="text"
+                          id="comissaoMone"
+                          formControlName="comissaoMone"
+                          [ngClass]="{'error': (submit || servicoForm.get('comissaoFuncionarios')?.touched) && servicoForm.get('comissaoFuncionarios')?.invalid}"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Valor em R$"
+                          required
+                      >
+                  </div>
+              </div>
+
+                </div>
+            </div>
+            <button
+                (click)="onSubmit()"
+                class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button"
+            >
+                Salvar
+            </button>
+        </form>
+    </div>
+</section>

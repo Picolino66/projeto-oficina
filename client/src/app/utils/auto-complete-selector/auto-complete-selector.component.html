@@ -1,0 +1,25 @@
+<div class="relative">
+  <label for="autocompleteInput" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ label }}</label>
+  <input
+    type="text"
+    id="autocompleteInput"
+    [(ngModel)]="termoBusca"
+    (input)="buscar(termoBusca)"
+    [placeholder]="placeholder"
+    [ngClass]="{'error': termoBusca.length > 0 && !selecionou}"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    autocomplete="off"
+  />
+  <ul
+    *ngIf="itensFiltrados.length > 0"
+    class="z-10 mt-1 w-full bg-white shadow-md max-h-60 overflow-auto border border-gray-300 rounded-md"
+  >
+    <li
+      *ngFor="let item of itensFiltrados"
+      (click)="selecionarItem(item)"
+      class="p-2 hover:bg-gray-100 cursor-pointer"
+    >
+      {{ item.nome }}
+    </li>
+  </ul>
+</div>

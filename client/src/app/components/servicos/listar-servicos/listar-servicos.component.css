@@ -1,0 +1,34 @@
+.largura-dinamica {
+  width: 81%; /* Largura inicial */
+  max-width: 100%; /* Limita a largura máxima para ser 100% do elemento pai */
+  box-sizing: border-box; /* Inclui o padding e a borda na largura total */
+
+  @media only screen and (max-width: 1800px) {
+      width: calc(81% + 8vw);
+  }
+
+  @media only screen and (max-width: 1700px) {
+      width: calc(81% + 6vw);
+  }
+
+  @media only screen and (max-width: 1600px) {
+      width: calc(81% + 4vw);
+  }
+
+
+  @media only screen and (max-width: 1500px) {
+      width: calc(81% + 2vw);
+  }
+
+  @media only screen and (max-width: 1400px) {
+    width: calc(81% - 1vw);
+  }
+
+  @media only screen and (max-width: 1200px) {
+    width: calc(81% - 2vw);
+  }
+
+  @media only screen and (max-width: 900px) {
+    width: calc(81% - 3vw);
+  }
+}

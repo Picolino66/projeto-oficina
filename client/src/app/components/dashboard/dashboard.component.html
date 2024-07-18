@@ -1,0 +1,197 @@
+<div class="px-4 pt-6">
+    <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
+        <div class="items-center justify-betwee bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+            <div class="w-full">
+                <h3 class="text-base font-normal text-gray-500 dark:text-gray-400">Serviços hoje</h3>
+                <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">{{totais?.totalServicosDia}}</span>
+            </div>
+            <div
+                class="w-full"
+                id="new-products-chart"
+            ></div>
+        </div>
+        <div class="items-center justify-betwee bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+            <div class="w-full">
+                <h3 class="text-base font-normal text-gray-500 dark:text-gray-400">Serviços neste mês</h3>
+                <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">{{totais?.totalServicosMes}}</span>
+            </div>
+            <div
+                class="w-full"
+                id="new-products-chart"
+            ></div>
+        </div>
+        <div class="items-center justify-betwee bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
+            <div class="w-full">
+                <h3 class="text-base font-normal text-gray-500 dark:text-gray-400">Serviços neste ano</h3>
+                <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">{{totais?.totalServicosAno}}</span>
+            </div>
+            <div
+                class="w-full"
+                id="new-products-chart"
+            ></div>
+        </div>
+    </div>
+    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 my-4">
+        <!-- Card header -->
+        <div class="items-center justify-between lg:flex">
+            <div class="mb-4 lg:mb-0">
+                <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Serviços em abertos</h3>
+                <span class="text-base font-normal text-gray-500 dark:text-gray-400">*Não foram quitados por completo.</span>
+            </div>
+        </div>
+
+        <table class="mt-4 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th
+                        scope="col"
+                        class="px-4 py-3 w-25"
+                    >
+                        Serviço
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-4 py-3 w-25"
+                    >
+                        Proprietário
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-4 py-3 text-center w-15"
+                    >
+                        Placa
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-4 py-3 text-center w-10"
+                    >
+                        Valor
+                    </th>
+                    <th
+                        scope="col"
+                        class="px-4 py-3 text-center w-25"
+                    >
+                        Opções
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let servico of servicosFiltrados"
+                    class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                >
+                    <th
+                        scope="row"
+                        class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-25"
+                    >
+                        {{ servico.nome | slice:0:40 }}{{ servico.nome.length > 40 ? '...' : '' }}
+                    </th>
+                    <th
+                        scope="row"
+                        class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-25"
+                    >
+                        {{ servico.cliente.nome }}
+                    </th>
+                    <td class="px-4 py-4 text-center w-10">{{ servico.placa }}</td>
+                    <td class="px-4 py-4 text-center w-15">{{ servico.preco }}</td>
+                    <td class="px-4 py-4 flex items-center justify-center">
+                        <button
+                            class="bg-green-500 hover:bg-green-600 text-white mr-5 px-5 py-2.5 rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                            (click)="modalPagar(servico)"
+                        >
+                            <span>Pagar</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bg-gray-50 dark:bg-gray-700 p-4 p-05">
+              <app-paginator
+                  [currentPage]="currentPage"
+                  [totalPages]="totalPages"
+                  (pageChanged)="consultarServicos($event)"
+              >
+              </app-paginator>
+          </div>
+    </div>
+</div>
+
+<div
+*ngIf="isModalPagar"
+id="popup-modal"
+tabindex="-1"
+class="fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+>
+<div class="relative p-4 w-full max-w-md max-h-full">
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <button
+            (click)="modalPagar()"
+            type="button"
+            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+            <svg
+                class="w-3 h-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+            >
+                <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                ></path>
+            </svg>
+            <span class="sr-only"></span>
+        </button>
+        <div class="p-4 md:p-5 text-center">
+            <svg
+                class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+            >
+                <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                ></path>
+            </svg>
+            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Valor a pagar?</h3>
+            <h4 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                Já foi pagou um total de: R${{ this.servicoModal.pagamento }}
+            </h4>
+            <div class="my-5">
+                <input
+                    type="number"
+                    id="placa"
+                    [(ngModel)]="this.pagar"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Placa"
+                    maxlength="8"
+                    required
+                >
+            </div>
+            <button
+                (click)="pagarServico()"
+                type="button"
+                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+            >
+                Pagar
+            </button>
+            <button
+                (click)="modalPagar()"
+                type="button"
+                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+                Não, cancelar
+            </button>
+        </div>
+    </div>
+</div>
+</div>

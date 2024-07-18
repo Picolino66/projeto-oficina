@@ -1,0 +1,161 @@
+<div class="relative shadow-md sm:rounded-lg">
+    <div class="div-cab-fixed flex w-full text-sm text-gray-500 dark:text-gray-400">
+        <div class="w-4/5 bg-gray-50 dark:bg-gray-700 p-4 p-05">
+            <app-paginator
+                [currentPage]="currentPage"
+                [totalPages]="totalPages"
+                (pageChanged)="consultarVeiculos($event)"
+            >
+            </app-paginator>
+        </div>
+        <div class="w-3/5 bg-gray-50 dark:bg-gray-700 p-4">
+            <app-input-search (searchChange)="handleSearchChange($event)"></app-input-search>
+        </div>
+    </div>
+    <table class="mt-16 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th
+                    scope="col"
+                    class="px-4 py-3 w-25"
+                >
+                    Proprietário
+                </th>
+                <th
+                    scope="col"
+                    class="px-4 py-3 w-25"
+                >
+                    Marca
+                </th>
+                <th
+                    scope="col"
+                    class="px-4 py-3 text-center w-15"
+                >
+                    Modelo
+                </th>
+                <th
+                    scope="col"
+                    class="px-4 py-3 text-center w-10"
+                >
+                    Placa
+                </th>
+                <th
+                    scope="col"
+                    class="px-4 py-3 text-center w-25"
+                >
+                    Opções
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let veiculo of veiculosFiltrados"
+                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+            >
+                <th
+                    scope="row"
+                    class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-25"
+                >
+                    {{ veiculo.cliente.nome }}
+                </th>
+                <th
+                    scope="row"
+                    class="px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white w-25"
+                >
+                    {{ veiculo.marca }}
+                </th>
+                <td class="px-4 py-4 text-center w-15">{{ veiculo.modelo }}</td>
+                <td class="px-4 py-4 text-center w-10">{{ veiculo.placa }}</td>
+                <td class="px-4 py-4 text-center w-25">
+                    <app-dropdown-rud
+                        [rotaAlterar]="'/veiculo/alterar'"
+                        [objetoPai]="veiculo"
+                        (eventoFilho)="opcaoEventos($event)"
+                    >
+                    </app-dropdown-rud>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div
+        *ngIf="isModalDetalhes"
+        class="fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+    >
+        <div class="relative w-full max-w-2xl bg-white rounded-lg shadow-md">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Veiculo</h3>
+                    <button
+                        type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        (click)="modalDetalhes(veiculoModal.id)"
+                    >
+                        <svg
+                            class="w-3 h-3"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 14 14"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                            ></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+                  <div class="flex justify-center">
+                      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                          {{ veiculoModal.tipo }} - {{ veiculoModal.modelo }}
+
+                      </h3>
+                  </div>
+                  <div class="flex justify-center">
+                      <p class="text-gray-900 dark:text-white">
+                          {{ veiculoModal.marca }} - {{ veiculoModal.placa }}
+                      </p>
+                  </div>
+
+                  <div class="flex justify-center">
+                    <p class="text-gray-900 dark:text-white">
+                        {{ veiculoModal.cor }} - {{ veiculoModal.ano }}
+                    </p>
+                  </div>
+
+                  <div class="flex justify-center">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Proprietário
+                    </h3>
+                </div>
+                <div class="flex justify-center">
+                    <p class="text-gray-900 dark:text-white">
+                        {{ veiculoModal.cliente.nome }}
+                    </p>
+                </div>
+
+
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button
+                        type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        (click)="modalDetalhes(veiculoModal.id)"
+                    >
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
