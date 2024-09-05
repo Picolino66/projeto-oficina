@@ -8,23 +8,25 @@
       
       
       
-      
-        <link rel="prev" href="../../introducao/configuracao_ambiente/">
-      
-      
-        <link rel="next" href="../componentes/">
+        <link rel="canonical" href="https://github.com/AZICode-Developpers/client-oficina-josue/components/app-component/app-component-ts/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+        <link rel="prev" href="../../../module/routing/">
+      
+      
+        <link rel="next" href="../app-component-html/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
-        <title>Conceitos Básicos - Documentação Angular 16 e Node.js</title>
+        <title>App-Component.ts - Documentação Oficina Josué Client</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
       
 
@@ -43,7 +45,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conceitos-basicos-do-angular-16" class="md-skip">
+        <a href="#componente-principal-appcomponent" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Documentação Angular 16 e Node.js" class="md-header__button md-logo" aria-label="Documentação Angular 16 e Node.js" data-md-component="logo">
+    <a href="../../.." title="Documentação Oficina Josué Client" class="md-header__button md-logo" aria-label="Documentação Oficina Josué Client" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -92,13 +94,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Documentação Angular 16 e Node.js
+            Documentação Oficina Josué Client
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conceitos Básicos
+              App-Component.ts
             
           </span>
         </div>
@@ -173,13 +175,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Documentação Angular 16 e Node.js" class="md-nav__button md-logo" aria-label="Documentação Angular 16 e Node.js" data-md-component="logo">
+    <a href="../../.." title="Documentação Oficina Josué Client" class="md-nav__button md-logo" aria-label="Documentação Oficina Josué Client" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Documentação Angular 16 e Node.js
+    Documentação Oficina Josué Client
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -191,7 +193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -225,7 +227,7 @@
             
   
   <span class="md-ellipsis">
-    Introdução
+    Module
   </span>
   
 
@@ -235,7 +237,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            Introdução
+            Module
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -246,11 +248,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introducao/visao_geral/" class="md-nav__link">
+      <a href="../../../module/introducao/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Visão Geral
+    Introdução
   </span>
   
 
@@ -267,11 +269,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introducao/configuracao_ambiente/" class="md-nav__link">
+      <a href="../../../module/module/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Configuração do Ambiente
+    Module
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module/routing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routing
   </span>
   
 
@@ -311,7 +334,7 @@
             
   
   <span class="md-ellipsis">
-    Angular
+    Components
   </span>
   
 
@@ -321,7 +344,44 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Angular
+            Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    App-Component
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            App-Component
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -345,7 +405,7 @@
           
   
   <span class="md-ellipsis">
-    Conceitos Básicos
+    App-Component.ts
   </span>
   
 
@@ -356,7 +416,7 @@
         
   
   <span class="md-ellipsis">
-    Conceitos Básicos
+    App-Component.ts
   </span>
   
 
@@ -378,47 +438,92 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#arquitetura-baseada-em-componentes" class="md-nav__link">
+  <a href="#visao-geral" class="md-nav__link">
     <span class="md-ellipsis">
-      Arquitetura Baseada em Componentes
+      Visão Geral
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visão Geral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-estrutura-do-componente" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Estrutura do Componente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Estrutura do Componente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importações
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#modulos" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#declaracao-do-componente" class="md-nav__link">
     <span class="md-ellipsis">
-      Módulos
+      Declaração do Componente
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#data-binding" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-funcionalidades-principais" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Binding
+      2. Funcionalidades Principais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Funcionalidades Principais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-alternancia-de-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Alternância de Tema
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#diretivas" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#22-gerenciamento-de-navegacao-e-titulo-da-pagina" class="md-nav__link">
     <span class="md-ellipsis">
-      Diretivas
+      2.2 Gerenciamento de Navegação e Título da Página
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#servicos-e-injecao-de-dependencia" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#23-funcoes-de-navegacao" class="md-nav__link">
     <span class="md-ellipsis">
-      Serviços e Injeção de Dependência
+      2.3 Funções de Navegação
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -438,53 +543,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../componentes/" class="md-nav__link">
+      <a href="../app-component-html/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Componentes
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../diretivas/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Diretivas
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../servicos_injecao_dependencia/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Serviços e Injeção de Dependência
+    App-Component.html
   </span>
   
 
@@ -497,124 +560,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Node.js
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            Node.js
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../nodejs/introducao/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Introdução ao Node.js
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../nodejs/npm/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Gerenciamento de Pacotes (npm)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../nodejs/express/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Express.js
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../nodejs/comunicacao_banco/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Comunicação com Banco de Dados
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -654,47 +599,92 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#arquitetura-baseada-em-componentes" class="md-nav__link">
+  <a href="#visao-geral" class="md-nav__link">
     <span class="md-ellipsis">
-      Arquitetura Baseada em Componentes
+      Visão Geral
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visão Geral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-estrutura-do-componente" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Estrutura do Componente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Estrutura do Componente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importações
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#modulos" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#declaracao-do-componente" class="md-nav__link">
     <span class="md-ellipsis">
-      Módulos
+      Declaração do Componente
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#data-binding" class="md-nav__link">
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-funcionalidades-principais" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Binding
+      2. Funcionalidades Principais
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Funcionalidades Principais">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-alternancia-de-tema" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Alternância de Tema
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#diretivas" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#22-gerenciamento-de-navegacao-e-titulo-da-pagina" class="md-nav__link">
     <span class="md-ellipsis">
-      Diretivas
+      2.2 Gerenciamento de Navegação e Título da Página
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#servicos-e-injecao-de-dependencia" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#23-funcoes-de-navegacao" class="md-nav__link">
     <span class="md-ellipsis">
-      Serviços e Injeção de Dependência
+      2.3 Funções de Navegação
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -713,25 +703,84 @@
                   
 
 
-<h1 id="conceitos-basicos-do-angular-16">Conceitos Básicos do Angular 16</h1>
-<p>Angular 16 é a versão mais recente do popular framework de desenvolvimento de aplicações web front-end desenvolvido pelo Google. Ele continua a oferecer uma arquitetura baseada em componentes, utilizando TypeScript como linguagem principal, o que garante um código tipado e mais robusto.</p>
-<h2 id="arquitetura-baseada-em-componentes">Arquitetura Baseada em Componentes</h2>
-<p>No Angular, tudo é construído em torno de <strong>componentes</strong>. Um componente é uma classe que gerencia uma view (interface de usuário) e define a lógica de comportamento da interface. Componentes são reutilizáveis e encapsulam toda a lógica necessária para renderizar uma parte específica da aplicação.</p>
-<h2 id="modulos">Módulos</h2>
-<p>Um <strong>módulo</strong> no Angular é uma coleção de componentes, diretivas, pipes e serviços que são agrupados para formar uma funcionalidade coesa. O módulo raiz é chamado de <code>AppModule</code>, e outros módulos podem ser criados para dividir a aplicação em partes menores e mais gerenciáveis.</p>
-<h2 id="data-binding">Data Binding</h2>
-<p>O Angular 16 utiliza um sistema de <strong>data binding</strong> que permite a sincronização entre a interface do usuário e a lógica da aplicação. Os principais tipos de data binding são:</p>
+<h1 id="componente-principal-appcomponent">Componente Principal (AppComponent)</h1>
+<p>O <code>AppComponent</code> é o componente raiz da aplicação Angular. Ele é responsável por controlar a navegação e o estado geral da aplicação, além de gerenciar temas (claro/escuro) e autenticação.</p>
+<h2 id="visao-geral">Visão Geral</h2>
+<p>O <code>AppComponent</code> contém a lógica para:</p>
 <ul>
-<li><strong>Interpolation</strong>: Sintaxe para exibir valores de variáveis na view, por exemplo, <code>{{ variável }}</code>.</li>
-<li><strong>Property Binding</strong>: Permite definir valores das propriedades do DOM a partir da lógica da aplicação, por exemplo, <code>[src]="imagemUrl"</code>.</li>
-<li><strong>Event Binding</strong>: Conecta eventos do DOM a métodos do componente, por exemplo, <code>(click)="onClick()"</code>.</li>
-<li><strong>Two-way Data Binding</strong>: Sincroniza os dados entre o modelo e a view, utilizando a sintaxe <code>[(ngModel)]</code>.</li>
+<li>Alternar entre o modo claro e escuro.</li>
+<li>Gerenciar o título da página com base na rota atual.</li>
+<li>Navegar para a página de cadastro e logout.</li>
+<li>Identificar se o usuário tem status de administrador.</li>
 </ul>
-<h2 id="diretivas">Diretivas</h2>
-<p><strong>Diretivas</strong> são instruções no template que alteram a aparência ou o comportamento de um elemento no DOM. Elas podem ser estruturais, como <code>*ngIf</code> e <code>*ngFor</code>, ou atributivas, como <code>[ngClass]</code> e <code>[ngStyle]</code>.</p>
-<h2 id="servicos-e-injecao-de-dependencia">Serviços e Injeção de Dependência</h2>
-<p>Serviços são classes que encapsulam a lógica de negócios ou de acesso a dados que não está diretamente relacionada ao gerenciamento de uma view. O Angular utiliza <strong>injeção de dependência</strong> (DI) para fornecer instâncias de serviços aos componentes ou a outros serviços.</p>
-<p>Angular 16 continua a evoluir para oferecer uma melhor performance, com otimizações significativas, novas funcionalidades e suporte estendido a padrões modernos de desenvolvimento.</p>
+<h3 id="1-estrutura-do-componente">1. Estrutura do Componente</h3>
+<h4 id="importacoes">Importações</h4>
+<p>O componente importa vários módulos e serviços necessários para seu funcionamento, incluindo:</p>
+<ul>
+<li><strong><code>Router</code></strong>: Para gerenciar a navegação.</li>
+<li><strong><code>FuncionarioService</code></strong>: Para obter informações sobre funcionários.</li>
+<li><strong><code>LoginService</code></strong>: Para gerenciar o estado de autenticação.</li>
+<li><strong><code>Subscription</code></strong>: Para gerenciar assinaturas RxJS.</li>
+</ul>
+<h4 id="declaracao-do-componente">Declaração do Componente</h4>
+<pre><code class="language-typescript">@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit, OnDestroy {
+  dark: boolean = true;
+  private routeSub: Subscription | undefined;
+  title = 'client-oficina-josue-1.0';
+  adm = false;
+  //...
+}
+</code></pre>
+<h3 id="2-funcionalidades-principais">2. Funcionalidades Principais</h3>
+<h4 id="21-alternancia-de-tema">2.1 Alternância de Tema</h4>
+<p>O componente oferece a funcionalidade de alternar entre modos de tema claro e escuro:</p>
+<pre><code class="language-typescript">toggleTheme() {
+  document.body.classList.toggle('dark');
+  this.dark = !this.dark;
+}
+</code></pre>
+<p>Essa função é chamada quando o usuário clica no botão de alternância de tema no template HTML.</p>
+<h4 id="22-gerenciamento-de-navegacao-e-titulo-da-pagina">2.2 Gerenciamento de Navegação e Título da Página</h4>
+<p>O <code>AppComponent</code> gerencia o título da página com base na rota atual usando o serviço <code>Router</code>:</p>
+<pre><code class="language-typescript">ngOnInit(): void {
+  this.admin();
+  this.routeSub = this.router.events.subscribe(event =&gt; {
+    if (event instanceof NavigationEnd) {
+      const pagina = this.router.url.slice(1).replace(/\//g, '-&gt;');
+      if(pagina.includes(&quot;dashboard&quot;)){
+        this.title = &quot;Painel&quot;;
+      } else if(pagina.includes(&quot;cliente&quot;)) {
+        this.title = &quot;Cliente&quot;;
+      }
+      //... outras condições
+    }
+  });
+  document.body.classList.toggle('dark');
+  initFlowbite();
+}
+</code></pre>
+<p>Esse método escuta eventos de navegação e atualiza o título da página de acordo com a rota ativa.</p>
+<h4 id="23-funcoes-de-navegacao">2.3 Funções de Navegação</h4>
+<p>O componente inclui métodos para navegar entre diferentes partes da aplicação:</p>
+<ul>
+<li><code>cadastro()</code>: Navega para a página de cadastro.</li>
+<li><code>sair()</code>: Realiza o logout do usuário e redireciona para a página inicial.</li>
+</ul>
+<pre><code class="language-typescript">cadastro() {
+  this.router.navigate([&quot;/cadastro&quot;]);
+}
+
+sair() {
+  this.login.logout();
+  localStorage.clear();
+  this.router.navigate([&quot;/&quot;]);
+}
+</code></pre>
 
 
 
@@ -778,10 +827,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
     
   </body>
